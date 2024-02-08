@@ -10,11 +10,29 @@ switch($action)
         }
         case 'connexion' :
            {
+            //var_dump($_REQUEST );
              $username=$_REQUEST['username'];
-            $password=$_REQUEST['password'];
-            
+            $password=$_REQUEST['password'];  
+            $flag=false;  
+            foreach ($connexion as $userId => $userData) 
+            {
+        
+                //var_dump($userData); 
+              if (isset($userData[$username]) && $userData[$username] === $password) {
+                
+                    $flag=true;
+                    
+                }
+          
             }
-    
+          if ($flag){
+             include 'views/choix.php';
+          }else{
+            include 'views/connexion.php';
+          }
+
+            break;
+            }
             default:
     {include 'views/connexion.php';}
           }        
