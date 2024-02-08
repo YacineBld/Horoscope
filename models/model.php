@@ -13,3 +13,11 @@ $signe = array(
     'Verseau' => 'Ce travail vous demandera beaucoup dingéniosité',
     'Poisson' => 'Votre esprit vif et limpide facilite la résolution des problèmes.',
 );
+
+$connexion = array(
+    1 => array('toto' => '1234'),
+    2 => array('john' => 'password123'),
+    3 => array('alice' => 'qwerty'),
+    4 => array('momo' => 'azerty'),
+    5 => array('carre' => 'abcd'),
+);
