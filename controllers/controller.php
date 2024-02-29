@@ -33,6 +33,15 @@ switch($action)
 
             break;
             }
+            
+            case 'modifier' :
+              {
+                
+                include 'views/admin.php';
+                break;
+              }
+              case 'administrer' : 
+                var_dump($_REQUEST);
             default:
     {include 'views/connexion.php';}
           }        
