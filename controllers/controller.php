@@ -3,29 +3,20 @@ switch($action)
 {
     case'reponse':
         {
-          //var_dump($_REQUEST);
+          var_dump($_REQUEST);
             $liste=$_REQUEST['liste'];
-            echo $signe[$liste];
+            $texte=getLesSignes($liste);
+            include 'views/reponse.php';
                 break;
         }
         case 'connexion' :
            {
-            //var_dump($_REQUEST );
-             $username=$_REQUEST['username'];
+            $username=$_REQUEST['username'];
             $password=$_REQUEST['password'];  
-            $flag=false;  
-            foreach ($connexion as $userId => $userData) 
-            {
-        
-                //var_dump($userData); 
-              if (isset($userData[$username]) && $userData[$username] === $password) {
-                
-                    $flag=true;
-                    
-                }
-          
-            }
+            $flag=getConnexion($username, $password);  
+            
           if ($flag){
+             $signe = GetLesSignes();
              include 'views/choix.php';
           }else{
             include 'views/connexion.php';
@@ -36,7 +27,7 @@ switch($action)
             
             case 'modifier' :
               {
-                
+                         
                 include 'views/admin.php';
                 break;
               }
@@ -45,3 +36,8 @@ switch($action)
             default:
     {include 'views/connexion.php';}
           }        
+
+
+
+
+
