@@ -16,7 +16,14 @@ switch($action)
             $flag=getConnexion($username, $password);  
             
           if ($flag){
-             $signe = GetLesSignes();
+            $data = GetLesSignes();
+            $signe = array();
+
+          foreach ($data as $element) {
+          $signe[$element['signe']] = $element['horoscope'];
+          }
+
+              var_dump($signe);
              include 'views/choix.php';
           }else{
             include 'views/connexion.php';
@@ -27,7 +34,7 @@ switch($action)
             
             case 'modifier' :
               {
-                         
+                  
                 include 'views/admin.php';
                 break;
               }

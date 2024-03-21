@@ -20,7 +20,7 @@ return $signe;
 function connexion()
 {
     $serveur='mysql:host=localhost';
-    $bdd='dbname=blog_db';
+    $bdd='dbname=horoscope';
     $user='root';
     $mdp="";
     try{
@@ -41,3 +41,12 @@ function executerRequete($sql,$params = null){
     }
     return $resultat;
 }
+/*
+$stmt = $db->prepare("INSERT INTO astrologie (signe, horoscope) VALUES (:signe, :horoscope)");
+
+        foreach ($signe as $signe => $horoscope) {
+            $stmt->bindParam(':signe', $horoscope);
+            $stmt->bindParam(':horoscope', $horoscope);
+            $stmt->execute();
+        }
+*/
