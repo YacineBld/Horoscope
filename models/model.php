@@ -1,22 +1,26 @@
 <?php
 include 'models/data.php';
 
+function getLeSigne($choix){
+  $leSigne = getLesSignes();
+  return $leSigne[$choix];
+}
 function getConnexion($username, $password)
 {
-  $sql="SELECT COUNT(*) FROM connexion WHERE login = '$username' and mdp = '$password'";
+  $sql="SELECT COUNT(*) as nb FROM connexion WHERE login = '$username' and mdp = '$password'";
   var_dump($sql);
-  return executerRequete($sql)->fetchAll(); 
+  return executerRequete($sql)->fetch(); 
 }
-function getLeSignes($liste)
-{
-  
-  $sql = "SELECT horoscope FROM astrologie";
-  return executerRequete($sql)->fetchAll(); 
-}
-  
-function getLesSignes()
-{
+function getDataSignes(){
   $sql = "SELECT * FROM astrologie";
-  return executerRequete($sql)->fetchAll(); 
+  var_dump($sql);
+  return executerRequete($sql)->fetchAll();
 }
+function getLesSignes(){
+  $tab = getDataSignes();
 
+  foreach ($tab as $k) :
+    $signes[$k['signe']] = $k['horoscope'];
+    endforeach;
+    return $signes;
+}

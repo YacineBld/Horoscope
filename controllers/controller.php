@@ -1,48 +1,39 @@
 <?php
-switch($action)
-{
-    case'reponse':
-        {
-          var_dump($_REQUEST);
-            $liste=$_REQUEST['liste'];
-            $texte=getLesSignes($liste);
-            include 'views/reponse.php';
-                break;
-        }
-        case 'connexion' :
-           {
-            $username=$_REQUEST['username'];
-            $password=$_REQUEST['password'];  
-            $flag=getConnexion($username, $password);  
-            
-          if ($flag){
-            $data = GetLesSignes();
-            $signe = array();
+switch ($action) {
+  case 'reponse': {
+    $choix = $_REQUEST['choix'];
+    $tab = getLeSigne($choix);
+    var_dump($tab);
+    include 'views/reponse.php';
+    break;
+  }
+  case 'connexion': {
+    $username = $_REQUEST['username'];
+    $password = $_REQUEST['password'];
+    $flag = getConnexion($username, $password);
 
-          foreach ($data as $element) {
-          $signe[$element['signe']] = $element['horoscope'];
-          }
+    if ($flag['nb'] == 1) {
+      $signe = getLesSignes();
+  
+      include 'views/choix.php';
+    } else {
+      include 'views/connexion.php';
+    }
 
-              var_dump($signe);
-             include 'views/choix.php';
-          }else{
-            include 'views/connexion.php';
-          }
+    break;
+  }
 
-            break;
-            }
-            
-            case 'modifier' :
-              {
-                  
-                include 'views/admin.php';
-                break;
-              }
-              case 'administrer' : 
-                var_dump($_REQUEST);
-            default:
-    {include 'views/connexion.php';}
-          }        
+  case 'modifier': {
+    $signe = getLesSignes();
+    include 'views/admin.php';
+    break;
+  }
+  case 'administrer':
+    var_dump($_REQUEST);
+  default: {
+    include 'views/connexion.php';
+  }
+}
 
 
 

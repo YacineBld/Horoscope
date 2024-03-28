@@ -1,2 +1,2 @@
 <?php
-echo $texte;
+echo $tab;
