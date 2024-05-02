@@ -24,3 +24,9 @@ function getLesSignes(){
     endforeach;
     return $signes;
 }
+function getModifier($username, $password)
+{
+  $sql="UPDATE(*) FROM connexion WHERE login = '$username' and mdp = '$password'";
+  var_dump($sql);
+  connexion()->exec($sql);
+}
